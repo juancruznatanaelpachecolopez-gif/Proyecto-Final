@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Final</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="box">
+    <nav>
+        <ul class="upi">
+            <li><img class="img-2" src="/imagenes/Logo minimalista con microchip.png"></li>
+            <li><a href="Index.Html">Inicio</a></li>
+            <li><a href="/HTML/base-datos.html">Taller de Programación</a></li>
+            <li><a href="/HTML/Taller-de-programacion.html">Base de Datos</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="img-titulo">
+    <img class="img-1" src="https://cdn.prod.website-files.com/5f9b0c64d9432ea1ae26110c/680c373d3df5ea8859a2e5b6_Group%201951.webp">
+    <h1>Proyecto final de Base de Datos y Taller de programación</h1>
+</section>
+
+<div class="div1">
+    <h2 class="h22">Introducción</h2>
+    <p class="p1"><p class="p1">Este trabajo trata sobre el desarrollo de una página web que reúne y organiza todos los contenidos trabajados en las materias Base de Datos y Taller de Programación. En esta página vamos a explicar definiciones, conceptos, ejemplos, capturas de pantalla, diagramas y fragmentos de código que permiten comprender algunos temas de manera práctica.</p>
+</div>
+
+<section class="registro-final">
+    <div class="registro-box">
+        <h2>Registrate</h2>
+
+        <form id="form-registro">
+            <input type="text" placeholder="Nombre completo" required>
+            <input type="email" placeholder="Correo electrónico" required>
+            <input type="password" placeholder="Contraseña" required>
+            <button type="submit">Crear cuenta</button>
+        </form>
+
+        <p class="texto-abajo">¿Ya tenés una cuenta? <a href="#">Iniciar sesión</a></p>
+    </div>
+
+    <div id="mensaje-exito" class="oculto">
+        <h2>¡Registro completado!</h2>
+        <p>Te registraste correctamente.</p>
+    </div>
+</section>
+
+<footer class="PIE-pagina">
+    <div class="grupo-1">
+
+        <div class="boxx">
+            <figure>
+                <a href="#">
+                    <img src="/imagenes/Logo minimalista con microchip.png" alt="logo">
+                </a>
+            </figure>
+        </div>
+
+        <div class="boxx">
+            <h2>SOBRE NOSOTROS</h2>
+            <p>Somos un grupo de estudiantes que esta haciendo una pagina web de lo que estuvieron viendo del año.</p>
+        </div>
+
+        <div class="redsocial">
+            <h2>SÍGUENOS</h2>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+
+    </div>
+
+    <div class="grupo-2">
+        <small>&copy; 2025 <b>Trikipedia</b> - Todos los Derechos Reservados.</small>
+    </div>
+</footer>
+
+<script>
+document.getElementById("form-registro").addEventListener("submit", function(e){
+    e.preventDefault(); 
+
+    document.querySelector(".registro-box").style.display = "none";
+    document.getElementById("mensaje-exito").style.display = "block";
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+
+<!-- saved from url=(0048)https://pseint.sourceforge.net/slide/pseint.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>Descubra PSeInt</title><style> 
+
+	/* la idea basica para pasar las slides con solo css haciendo trucos con unos radiobuttons está tomada de http://csscience.com/responsiveslidercss3/ */
+
+	/* hasta llegar al img del slide, todos deben tener 100% de height para que herede eso como alto de referencia, si no el height de la imagen no aplica */
+	body,html,article { height:100%; }
+	body { margin:0px; }
+
+	/* esto es para que no muestre scrollbars en la ventana */
+	body { overflow:hidden; background-image:url('back.png');}
+
+	/* para pasar las slides sin css usa labels con el atributo "for" seteado en el id de un input de tipo radiobutton, esto oculta esos radiobuttons */
+	input { display: none; }
+
+	/* esta es la magia del movimiento, cuando se "chekea" un radio button cambia la posición del gran div que tiene la tira de slides */
+	#slide01:checked ~ #slides .inner { margin-left:0; }
+	#slide02:checked ~ #slides .inner { margin-left:-100%; }
+	#slide03:checked ~ #slides .inner { margin-left:-200%; }
+	#slide04:checked ~ #slides .inner { margin-left:-300%; }
+	#slide05:checked ~ #slides .inner { margin-left:-400%; }
+	#slide06:checked ~ #slides .inner { margin-left:-500%; }
+	#slide07:checked ~ #slides .inner { margin-left:-600%; }
+	#slide08:checked ~ #slides .inner { margin-left:-700%; }
+	#slide09:checked ~ #slides .inner { margin-left:-800%; }
+	#slide10:checked ~ #slides .inner { margin-left:-900%; }
+
+	/* este es el envoltorio del gran div que tiene la tira de slides, que ocupa la pantalla y oculta lo que sale fuera */
+	#slides {
+		z-index:-3;
+		width: 100%;
+		overflow: hidden;
+		height:100%;
+	}
+
+	/* este es el gran div que tiene la tira de slides, esta dentro de otro div que solo deja ver una parte, un slide */
+	/* el ancho es 100%*cant_slides */
+	#slides .inner {
+		width: 1000%;
+		height:100%;
+	}
+
+	/* este es un slide, el ancho es 100%*1/cant_slides, porque es relativo al div anterior */
+	#slides article {
+		height:100%;
+		width: 10%;
+		float: left;
+	}
+
+	/* cada slide tiene tres partes, un titulo, una imagen y una descripcion*/
+	.slide_title  {
+		color:#DDDDDD;
+		font-size:130%;
+		height:7%;
+		font-weight:bold;
+		padding: 0.5% 0% 0% 6%;
+		text-shadow: 2px 2px 5px #BBBBBB; 
+		/* para que se desvanezca al cambiar de slide */
+		-webkit-transition: all .25s ease-out;
+		-moz-transition: all .25s ease-out;
+		-o-transition: all .25s ease-out;
+		transition: all .25s ease-out;
+		opacity:0;
+	}
+	.slide_text  {
+		font-size:130%;
+		padding: 3%;
+	}
+	.slide_text B  {
+		font-weight:normal;
+		text-shadow: 2px 2px 5px #555555;
+	}
+	.slide_image  {
+		float:right;
+		padding: 1%;
+		max-width: 70%; 
+		max-height: 79%; 
+		height: 200%;
+	}
+	.slide_next {
+		font-size:100%;
+		height:7%;
+		font-weight:bold;
+		padding: 1% 5% 0% 0%;
+		float:right;
+		-webkit-transition: all 0.35s ease-out;
+		-moz-transition: all 0.35s ease;
+		-o-transition: all 0.35s ease;
+	}	
+	.slide_next label {
+		cursor:pointer;
+	}
+	.slide_next label:hover, .slide_next a:hover {
+		-webkit-transition: all 0.35s ease-out;
+		-moz-transition: all 0.35s ease;
+		-o-transition: all 0.35s ease;
+		color:#000055;
+		font-size:115%;
+	}
+	.slide_next label, .slide_next a {
+		cursor:pointer;
+		color:#555555;
+		-webkit-transition: all 0.35s ease-out;
+		-moz-transition: all 0.35s ease;
+		-o-transition: all 0.35s ease;
+	}
+
+	/* esta es la barra negra de arriba, donde despues se coloca el titulo del slide */
+	.myheader {
+		z-index:-2;
+		height:8%;
+		position: absolute;
+		top: 0px;
+		width: 100%;
+		background:#555555;
+	}
+
+	/* esta es la barra negra de abajo, con los iconos para ir a cada slide */
+	.icon {
+		height:10%;
+		position: absolute;
+		top: 93%;
+		width: 100%;
+		background:#555555;
+		font-size:170%;
+		color:#BBBBBB;
+		font-weight:bold;
+	}
+	.icon *:hover {
+		color:#FFFFFF;
+	}
+	.icon * {
+/* 		height:90%; */
+		cursor:pointer;
+	}
+	.icon label {
+		-webkit-transition: all 0.5s ease-out;
+		-moz-transition: all 0.5s ease;
+		-o-transition: all 0.5s ease;
+	}
+	/*.icon img {
+	    cursor:pointer;
+	    padding: 5px 10px 0px 10px;
+	}*/
+
+	/* Animation */
+	#slides .inner {
+		-webkit-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+		-moz-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+		-ms-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+		-o-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+		transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000); /* easeInOutQuart */
+		-webkit-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+		-moz-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+		-ms-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+		-o-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+		transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); /* easeInOutQuart */
+	}
+
+	/* para que seleccione abajo el nro de slide */
+	#slide01:checked ~ .icon label:nth-child(1),
+	#slide02:checked ~ .icon label:nth-child(2),
+	#slide03:checked ~ .icon label:nth-child(3),
+	#slide04:checked ~ .icon label:nth-child(4),
+	#slide05:checked ~ .icon label:nth-child(5),
+	#slide05:checked ~ .icon label:nth-child(5),
+	#slide06:checked ~ .icon label:nth-child(6),
+	#slide07:checked ~ .icon label:nth-child(7),
+	#slide08:checked ~ .icon label:nth-child(8),
+	#slide09:checked ~ .icon label:nth-child(9),
+	#slide10:checked ~ .icon label:nth-child(10) {
+		    -webkit-transition: all 0.5s ease-out;
+		    -moz-transition: all 0.5s ease;
+		    -o-transition: all 0.5s ease;
+		background: #444444;
+	}
+
+	/* para que el titulo del slide haga un fade in al seleccionarla */
+	#slide01:checked ~ #slides article:nth-child(1) .slide_title,
+	#slide02:checked ~ #slides article:nth-child(2) .slide_title,
+	#slide03:checked ~ #slides article:nth-child(3) .slide_title,
+	#slide04:checked ~ #slides article:nth-child(4) .slide_title,
+	#slide05:checked ~ #slides article:nth-child(5) .slide_title,
+	#slide06:checked ~ #slides article:nth-child(6) .slide_title,
+	#slide07:checked ~ #slides article:nth-child(7) .slide_title,
+	#slide08:checked ~ #slides article:nth-child(8) .slide_title,
+	#slide09:checked ~ #slides article:nth-child(9) .slide_title,
+	#slide10:checked ~ #slides article:nth-child(10) .slide_title {
+		opacity: 1;
+		-webkit-transition: all 1s ease-out 0.6s;
+		-moz-transition: all 1s ease-out 0.6s;
+		-o-transition: all 1s ease-out 0.6s;
+		transition: all 1s ease-out 0.6s;
+	}
+
+
+
+@media screen and (max-height:480px) and (max-height:640px) {
+	.slide_title  {
+		font-size:100%;
+	}
+	.slide_text  {
+		font-size:100%;
+	}
+	.icon {
+		font-size:130%;
+	}
+}
+@media screen and (min-height:800px) and (min-width:1400px) {
+	.slide_title  {
+		font-size:170%;
+	}
+	.slide_text  {
+		font-size:150%;
+	}
+	.icon {
+		font-size:200%;
+	}
+}
+
+
+</style></head><body>
+
+	<article id="slider">
+
+		<input checked="checked" selected="false" name="slider" id="slide01" type="radio">
+		<input selected="false" name="slider" id="slide02" type="radio">
+		<input selected="false" name="slider" id="slide03" type="radio">
+		<input selected="false" name="slider" id="slide04" type="radio">
+		<input selected="false" name="slider" id="slide05" type="radio">
+		<input selected="false" name="slider" id="slide06" type="radio">
+		<input selected="false" name="slider" id="slide07" type="radio">
+		<input selected="false" name="slider" id="slide08" type="radio">
+		<input selected="false" name="slider" id="slide09" type="radio">
+		<input selected="false" name="slider" id="slide10" type="radio">
+		
+		<div class="myheader">
+		<img src="./Descubra PSeInt_files/icon.png" style="max-height:100%;">
+<!-- 		<a style="float:right;margin: 10px 20px 0 0;color:#BBBBBB;" href="http://pseint.sourceforge.net">http://pseint.sourceforge.net</A> -->
+		</div>
+
+		<div class="icon"><center>
+			<label for="slide01">&nbsp;1&nbsp;</label>
+			<label for="slide02">&nbsp;2&nbsp;</label>
+			<label for="slide03">&nbsp;3&nbsp;</label>
+			<label for="slide04">&nbsp;4&nbsp;</label>
+			<label for="slide05">&nbsp;5&nbsp;</label>
+			<label for="slide06">&nbsp;6&nbsp;</label>
+			<label for="slide07">&nbsp;7&nbsp;</label>
+			<label for="slide08">&nbsp;8&nbsp;</label>
+			<label for="slide09">&nbsp;9&nbsp;</label>
+			<label for="slide10">&nbsp;10&nbsp;</label>
+		</center></div>
+
+		<div id="slides"><div class="inner">
+			
+			<article>
+				<div class="slide_title">Descubra PSeInt</div>
+				<img class="slide_image" src="./Descubra PSeInt_files/screenshot01.png">
+				<div class="slide_text">PSeInt le ayuda a escribir algoritmos utilizando un pseudo-lenguaje simple, intuitivo y en español.<br><br>El objetivo es permitir al estudiante <b>centrar la atención en los conceptos fundamentales</b> que debe aprender, sin perder tiempo en los detalles de un lenguaje o del uso de un intérprete o compilador.</div>
+				<div class="slide_next"><label for="slide02">continuar...</label></div>
+			</article>
+			
+			<article>
+				<div class="slide_title">Obtenga resultados</div>
+				<img class="slide_image" src="./Descubra PSeInt_files/screenshot02.png">
+				<div class="slide_text">Permite <b>ejecutar el algoritmo para observar su funcionamiento</b> y verificar los resultados.<br><br>Además, puede modificar el algoritmo ejecutado y observar cómo cambia el resultado automáticamente, sin volver a ingresar los datos de entrada. O también puede volver a ejecutar solo una parte del mismo.</div>
+				<div class="slide_next"><label for="slide03">continuar...</label></div>
+			</article>
+			
+			<article>
+				<div class="slide_title">Ajuste las reglas</div>
+				<img class="slide_image" src="./Descubra PSeInt_files/screenshot03.png">
+				<div class="slide_text"><b>Las reglas del lenguaje se pueden ajustar</b> o flexibilizar según las necesidades de cada docente. El interprete incluye una lista de perfiles preconfigurados para las distintas instituciones que ya lo utilizan.</div>
+				<div class="slide_next"><label for="slide04">continuar...</label></div>
+			</article>
+			
+			<article>
+				<div class="slide_title">Concéntrese en lo importante</div>
+				<img class="slide_image" src="./Descubra PSeInt_files/screenshot04.png">
+				<div class="slide_text">El editor ofrece diferentes tipos de <b>ayudas mientras escribe</b> (sugerencias, autocompletado, indentado, etc), y brinda la posibilidad de utilizar plantillas para los comandos básicos, junto con sus correspondientes descripciones que le ayudarán a completarlas.</div>
+				<div class="slide_next"><label for="slide05">continuar...</label></div>
+			</article>
+			
+			<article>
+				<div class="slide_title">Entienda y corrija sus errores</div>
+				<img class="slide_image" src="./Descubra PSeInt_files/screenshot05.png">
+				<div class="slide_text">El intérprete <b>identifica claramente los errores</b> de su algoritmo y ofrece descripciones completas y sugerencias para que pueda corregirlos fácilmente.</div>
+				<div class="slide_next"><label for="slide06">continuar...</label></div>
+			</article>
+			
+			<article>
+				<div class="slide_title">Dibuje su algoritmo</div>
+				<img class="slide_image" src="./Descubra PSeInt_files/screenshot06.png">
+				<div class="slide_text">Además del pseudocódigo, PSeInt permite trabajar con <b>diagramas de flujo</b>, convirtiendo automáticamente los algoritmos entre una y otra representación, siendo posible editarlos en ambos formatos.</div>
+				<div class="slide_next"><label for="slide07">continuar...</label></div>
+			</article>
+			
+			<article>
+				<div class="slide_title">Todos los elementos</div>
+				<img class="slide_image" src="./Descubra PSeInt_files/screenshot07.png">
+				<div class="slide_text">El lenguaje incluye las <b>estructuras de control</b> más comunes, la posibilidad de definir <b>funciones/subprocesos</b>, y la capacidad de manipular <b>arreglos</b> de una o más dimensiones.</div>
+				<div class="slide_next"><label for="slide08">continuar...</label></div>
+			</article>
+			
+			<article>
+				<div class="slide_title">Analice el proceso</div>
+				<img class="slide_image" src="./Descubra PSeInt_files/screenshot08.png">
+				<div class="slide_text">Puede <b>ejecutar el algoritmo paso por paso</b> para ver qué instrucciones se ejecutan y en qué orden, y observar cómo cambian los contenidos de las variables de su programa.</div>
+				<div class="slide_next"><label for="slide09">continuar...</label></div>
+			</article>
+			
+			<article>
+				<div class="slide_title">Comprenda el funcionamiento</div>
+				<img class="slide_image" src="./Descubra PSeInt_files/screenshot09.png">
+				<div class="slide_text">Dispone además de un modo de ejecución especial donde el intérprete <b>explica en detalle la forma de procesar cada instrucción</b> para que el alumno comprenda mejor tanto  el funcionamiento del intérprete como la lógica del lenguaje.</div>
+				<div class="slide_next"><label for="slide10">continuar...</label></div>
+			</article>
+			
+			<article>
+				<div class="slide_title">Descárguelo ahora!</div>
+				<img class="slide_image" src="./Descubra PSeInt_files/screenshot10.png">
+				<div class="slide_text">El software es <b>libre, gratuito y multiplataforma</b>.<br><br> Incluye además una completa ayuda con ejemplos de diferentes niveles, y se actualiza frecuentemente para responder a las sugerencias y necesidades de los usuarios.</div>
+				<div class="slide_next"><a target="_blank" href="http://pseint.sourceforge.net/?page=descargas.php">Descargar...</a></div>
+			</article>
+				
+		</div></div>
+	</article>
+</body></html>
